@@ -20,6 +20,9 @@ moving_right = False
 moving_up = False
 moving_down = False
 
+#sprite sheets
+sprite_sheet_image = pygame.image.load('doux.png').convert_alpha()
+
 #colours
 
 bgcolor = (225, 198, 153)
@@ -63,10 +66,12 @@ class CHARACTER(pygame.sprite.Sprite):
         if moving_down:
             dy = self.speed
         
+        #collision edges
+        
+
         #update rect position
         self.rect.x += dx
         self.rect.y += dy
-        
 
     def draw(self):
         screen.blit(pygame.transform.flip(self.img, self.flip, False), self.rect)
