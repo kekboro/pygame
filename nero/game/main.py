@@ -1,6 +1,3 @@
-from curses import def_prog_mode
-from operator import truediv
-from turtle import bgcolor
 import pygame
 
 pygame.init()
@@ -21,49 +18,14 @@ moving_right = False
 moving_up = False
 moving_down = False
 
-#colours
+#colors
 
 bgcolor = (225, 198, 153)
 
+#draw background colour
+
 def draw_bg():
     screen.fill(bgcolor)
-
-#define map classes
-#
-#class Tile(pygame.sprite.Sprite):
-#    def __init__(self, image, x, y, spritesheet):
-#        pygame.sprite.Sprite.__init__(self)
-#        self.image = pygame.image.load(image)
-#        self.rect = self.image.get_rect()
-# #       self.rect.x, self.rect.y = x, y
-#
-#    def draw(self, surface):
-#        surface.blit(self.image, (self.rect.x, self.rect.y))
-#
-#class tilemap():
-#    def __init__(self, filename, spritesheet):
-#        self.tile_size = 32
-#       self.start_x, self.start_y = 0, 0
-#        self.spritesheet = spritesheet
-#    
-#    def read_csv(self, filename):
-#        map = []
-#        with open(os.path.join(filename)) as data:
-#            data = csv.reader(data, delimiter = ',')
-#            for row in data:
-#                map.append(list(row))
-#        return map
-#
-#    def load_tiles(self, filename):
-#        tiles = []
-#        map = self,read_csv(filename)
-#        x, y = 0, 0
-#        for row in map:
-#            x = 0
-#            for tile in row:
-#                if tile == '0'
-
-
 
 
 #define character class
@@ -133,26 +95,26 @@ while run:
             run = False
         #keyboard presses
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT: 
+            if event.key == pygame.K_d: 
                 moving_right = True
-            if event.key == pygame.K_LEFT: 
+            if event.key == pygame.K_a: 
                 moving_left = True
-            if event.key == pygame.K_UP: 
+            if event.key == pygame.K_w: 
                 moving_up = True
-            if event.key == pygame.K_DOWN: 
+            if event.key == pygame.K_s: 
                 moving_down = True
             if event.key == pygame.K_ESCAPE:
                 run = False
 
         #keyboard button released
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_RIGHT: 
+            if event.key == pygame.K_d: 
                 moving_right = False
-            if event.key == pygame.K_LEFT: 
+            if event.key == pygame.K_a: 
                 moving_left = False
-            if event.key == pygame.K_UP: 
+            if event.key == pygame.K_w: 
                 moving_up = False
-            if event.key == pygame.K_DOWN: 
+            if event.key == pygame.K_s: 
                 moving_down = False
 
     pygame.display.update()
