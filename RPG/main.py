@@ -12,6 +12,7 @@ class Game:
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        pygame.display.set_caption('I dont know')
         self.clock = pygame.time.Clock()
         #self.font = pygame.font.Font('Ariel', 32)
         self.running = True
