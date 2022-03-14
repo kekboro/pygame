@@ -1,15 +1,33 @@
-import pygame
+import pygame, csv, os
 from sprites import*
 from config import *
 import sys
+#from tilemap import *
 
-class GameP:
+#taken from different video on how to add csv file as map -> see tilemap.py
+#map = Tilemap('test_map.csv', spritesheet)
+
+class Game:
+    
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         self.clock = pygame.time.Clock()
         #self.font = pygame.font.Font('Ariel', 32)
         self.running = True
+
+        self.character_spritesheet = Spritesheet('img/Hero.png')
+        self.terrain_spritesheet = Spritesheet('img/Tileset.png')
+    
+    def createTilemap(self):
+        for i, row in enumerate(TILEMAP):
+            for j, column in enumerate(row):
+                Ground(self, j , i)
+                if column == "B":
+                   Block(self, j, i)
+                if column == "P":
+                    Player(self, j, i)
+
 
     def new(self):
         #a new game starts
@@ -20,7 +38,8 @@ class GameP:
         self.enemies = pygame.sprite.LayeredUpdates()
         self.attacks = pygame.sprite.LayeredUpdates()
 
-        self.player = Player(self, 1, 2)
+        self.createTilemap()
+
     
     def events(self):
     #game loop events
@@ -36,7 +55,7 @@ class GameP:
     def draw(self):
     #game loop draw
         self.screen.fill(BLACK)
-        self.all_sprites.draw()
+        self.all_sprites.draw(self.screen)
         self.clock.tick(FPS)
         pygame.display.update()
 
@@ -54,7 +73,7 @@ class GameP:
             self.draw()
 
 g = Game()
-g.introscreen()
+g.intro_screen()
 g.new()
 while g.running:
     g.main()
